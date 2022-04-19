@@ -10,12 +10,11 @@ namespace Final_Mission.Models
     {
 
         [Key]
-        [Required]
         public int QuoteId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "A Quote Text is required")]
         public string QuoteText { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="A Quote Author Is Required")]
         public string Author { get; set; }
         public DateTime Date { get; set; }
         public string Subject { get; set; }

@@ -1,0 +1,43 @@
+﻿@model Quote
+    <div class="text-center">
+
+
+        <h2>Quotes!</h2>
+        <p>Please fill out Quote information. </p>
+
+        <form class="text-center" method="post" asp-controller="Home" asp-action="AddEdit">
+
+            <div class="alert-danger" asp-validation-summary="All"></div>
+
+
+            <input type="hidden" asp-for="QuoteId" />
+
+            <div class="form-group">
+                <label asp-for="QuoteText">Quote Text</label>
+                <input asp-for="QuoteText" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Author">Author:</label>
+                <input asp-for="Author" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Date">Date</label>
+                <input type="datetime-local" asp-for="Date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject">Subject</label>
+                <input asp-for="Subject" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Citation">Citation:</label>
+                <input asp-for="Citation" class="form-control" />
+            </div>
+
+
+            <div class="float-end">
+                <input class="btn btn-primary" type="submit" value="Confirm Quote" />
+            </div>
+
+
+        </form>
+    </div>

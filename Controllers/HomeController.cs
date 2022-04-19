@@ -42,6 +42,51 @@ namespace Final_Mission.Controllers
             // returns model to the view
            return View(quote);
         }
+        [HttpGet]
+        public IActionResult AddEdit(int QuoteId)
+        {
+            // if not a new quote, then return the model to the view
+            if(QuoteId != 0)
+            {
+                Quote quote = repo.Quotes.Single(x => x.QuoteId == QuoteId);
+                return View(quote);
+          
+            }
+
+            else
+            {
+                return View();
+            }
+       
+        }
+        //For when they submit an edit or adding a new quote
+
+        [HttpPost]
+        public IActionResult AddEdit(Quote quote)
+        {
+            // only process if valid
+            if (ModelState.IsValid)
+            {
+
+                repo.DoQuote(quote);
+                return RedirectToAction("Index");
+            }
+
+
+            return View(quote);
+        }
+
+        // For when they delete a q uote
+
+        public IActionResult Delete(int QuoteId)
+        {
+            Quote quote = repo.Quotes.Single(x => x.QuoteId == QuoteId);
+
+            repo.Delete(quote);
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Privacy()
         {
