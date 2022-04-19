@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    // This is the page that lists everything out, and provides links to the other pages
+}
+
+
+<h1>Welcome to our quote repository! Feel feel to add quotes, delete, or anything of the like!</h1>
+
+<div class="text-center">
+
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Quote ID</th>
+            <th>Quote Text</th>
+            <th>Quote Author</th>
+            <th>Quote Date</th>
+            <th>Quote Citation</th>
+            <th>Quote Subject</th>
+            <th>Details</th>
+        </tr>
+        @foreach (Quote q in ViewBag.Quotes)
+        {
+
+    <tr>
+
+        <td> @q.QuoteId </td>
+        <td>@q.QuoteText</td>
+        <td>@q.Author</td>
+        <td>@q.Date</td>
+        <td>@q.Citation</td>
+        <td>@q.Subject</td>
+        <td><a asp-action="Details" asp-route-QuoteId="@q.QuoteId" class="btn btn-primary">Details</a></td>
+    </tr>
+
+
+        }
+        
+    </table>
+   
+</div>
