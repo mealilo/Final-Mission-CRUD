@@ -87,6 +87,41 @@ namespace Final_Mission.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Random()
+        {
+
+            // get max and min to go from min max, this has problems if you delete some  rows, so I have commented it out
+            //int minID = repo.Quotes.Min(x => x.QuoteId);
+            //int maxID = repo.Quotes.Max(x => x.QuoteId);
+            
+
+            // get list of valid ideas
+            List<int> listofValidIDs = repo.Quotes.Select(x => x.QuoteId).ToList();
+
+
+            // package to gen random numbers
+            Random Random = new Random();
+     
+
+            int minID = 0;
+
+            // to get index, we do count -1 
+            int maxID = (listofValidIDs.Count() - 1);
+
+
+            //gets random number based on random index of valid int's
+            int random_index = new Random().Next(minID, maxID); // Generates a number between 1 to 10
+
+            // get index of the random number that is in the list of valid id's
+            int random_number = listofValidIDs[random_index];
+
+            // gets quote based on random number
+            Quote randomQuote = repo.Quotes.Single(x => x.QuoteId == random_number);
+            
+            // send quote back to random page
+            return View(randomQuote);
+        }
+
 
         public IActionResult Privacy()
         {

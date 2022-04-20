@@ -1,0 +1,23 @@
+﻿@model Quote
+
+
+<div class="text-center">
+
+    <h1>Random Quote!!!</h1>
+    <div class="bg-light d-flex justify-content-center flex-column">
+
+
+
+        <h2>"@Model.QuoteText" - @Model.Author</h2>
+        <h3 class="text-center">@Model.Date</h3>
+        <h3>Subject: @Model.Subject</h3>
+        <h3>Citation: @Model.Citation</h3>
+        <h5>QuoteId: @Model.QuoteId</h5>
+
+        <div>
+            <a asp-action="Random"  class="btn btn-primary m-2">Random Again!</a>
+        </div>
+
+    </div>
+</div>
+
